@@ -64,4 +64,5 @@ for submission in tqdm.tqdm(results):
         f.write(str(submission["epoch_second"]))
 
     repo.git.add(f"./{contest_id}/{problem_id}/{problem_id}.{extension}")
+    repo.git.add(f".lastunixtime")
     repo.index.commit(f"add {contest_id}/{problem_id}/{problem_id}.{extension}")
