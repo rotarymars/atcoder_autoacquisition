@@ -44,6 +44,8 @@ for submission in tqdm.tqdm(results):
     bf_pattern = r"Branf.*"
     rb_pattern = r"Ruby.*"
     c_pattern = r"C.*"
+    dc_pattern = r"dc.*"
+    bash_pattern = r"Bash.*"
     extension = ""
     if re.match(py_pattern, submission_language):
         extension = "py"
@@ -55,8 +57,12 @@ for submission in tqdm.tqdm(results):
         extension = "rb"
     elif re.match(c_pattern, submission_language):
         extension = "c"
+    elif re.match(dc_pattern, submission_language):
+        extension = "dc"
+    elif re.match(bash_pattern, submission_language):
+        extension = "bash"
     else:
-        print("unknown language for submission {} at contest {}".format(submission_id, contest_id))
+        print("unknown language for submission {} at contest {}: {}".format(submission_id, contest_id, submission_language))
         continue
     with open(f"./{contest_id}/{problem_id}/{problem_id}.{extension}", "w") as f:
         f.write(code)
@@ -65,4 +71,4 @@ for submission in tqdm.tqdm(results):
 
     repo.git.add(f"./{contest_id}/{problem_id}/{problem_id}.{extension}")
     repo.git.add(f".lastunixtime")
-    repo.index.commit(f"add {contest_id}/{problem_id}/{problem_id}.{extension}")
+    repo.index.commit(f"Add {contest_id}/{problem_id}/{problem_id}.{extension}")
