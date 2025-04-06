@@ -64,11 +64,11 @@ for submission in tqdm.tqdm(results):
     else:
         print("unknown language for submission {} at contest {}: {}".format(submission_id, contest_id, submission_language))
         continue
-    with open(f"./{contest_id}/{problem_id}/{problem_id}.{extension}", "w") as f:
+    with open(f"{contest_id}/{problem_id}/{problem_id}.{extension}", "w") as f:
         f.write(code)
     with open(".lastunixtime", "w") as f:
         f.write(str(submission["epoch_second"]))
 
-    repo.git.add(f"./{contest_id}/{problem_id}/{problem_id}.{extension}")
+    repo.git.add(f"{contest_id}/{problem_id}/{problem_id}.{extension}")
     repo.git.add(f".lastunixtime")
     repo.index.commit(f"Add {contest_id}/{problem_id}/{problem_id}.{extension}")
