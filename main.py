@@ -46,6 +46,8 @@ for submission in tqdm.tqdm(results):
     c_pattern = r"C.*"
     dc_pattern = r"dc.*"
     bash_pattern = r"Bash.*"
+    txt_pattern = r"Text.*"
+    sed_pattern = r"Sed.*"
     extension = ""
     if re.match(py_pattern, submission_language):
         extension = "py"
@@ -61,6 +63,10 @@ for submission in tqdm.tqdm(results):
         extension = "dc"
     elif re.match(bash_pattern, submission_language):
         extension = "bash"
+    elif re.match(txt_pattern, submission_language):
+        extension = "txt"
+    elif re.match(sed_pattern, submission_language):
+        extension = "sed"
     else:
         print("unknown language for submission {} at contest {}: {}".format(submission_id, contest_id, submission_language))
         continue
