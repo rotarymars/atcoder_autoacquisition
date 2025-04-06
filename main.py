@@ -250,7 +250,7 @@ for submission in tqdm.tqdm(results):
     with open(f"{contest_id}/{problem_id}/{problem_id}.{extension}", "w") as f:
         f.write(code)
     with open(".lastunixtime", "w") as f:
-        f.write(str(submission["epoch_second"]))
+        f.write(str(1+int(submission["epoch_second"])))
 
     repo.git.add(f"{contest_id}/{problem_id}/{problem_id}.{extension}")
     repo.git.add(f".lastunixtime")
