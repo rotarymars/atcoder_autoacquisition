@@ -24,7 +24,7 @@ results = response.json()
 repo = Repo(".")
 
 for submission in tqdm.tqdm(results):
-    sleep(1)
+    sleep(0.1)
     if submission["result"] != "AC":
         continue
     contest_id = submission["contest_id"]
