@@ -3,7 +3,7 @@ This repository scrapes rotarymars's atocder's submissions.
 
 # What should I do to use it for myself?
 - Clone the repository.
-- checkout to 455e2adef03a5e4dec8c53596bf8883a32893d9f
+- checkout to 868c7f2e69e30778cc2ec28e232f6316a54a3806
 - Install requirements.txt
 - change the username in main.py
 - run main.py
