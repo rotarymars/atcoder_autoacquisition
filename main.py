@@ -132,14 +132,14 @@ for submission in tqdm.tqdm(results):
         extension = "cs"
     elif re.match(kt_pattern, submission_language):
         extension = "kt"
+    elif re.match(js_pattern, submission_language):
+        extension = "js"
     elif re.match(java_pattern, submission_language):
         extension = "java"
     elif re.match(nim_pattern, submission_language):
         extension = "nim"
     elif re.match(zig_pattern, submission_language):
         extension = "zig"
-    elif re.match(js_pattern, submission_language):
-        extension = "js"
     elif re.match(d_pattern, submission_language):
         extension = "d"
     elif re.match(swift_pattern, submission_language):
