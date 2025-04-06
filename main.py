@@ -41,7 +41,7 @@ for submission in tqdm.tqdm(results):
     os.makedirs(f"./{contest_id}/{problem_id}", exist_ok=True)
     py_pattern = r"Python.*"
     cpp_pattern = r"C++.*"
-    bf_pattern = r"Branf.*"
+    bf_pattern = r"Brainf.*"
     rb_pattern = r"Ruby.*"
     c_pattern = r"C.*"
     dc_pattern = r"dc.*"
