@@ -29,7 +29,7 @@ results = response.json()
 repo = Repo(".")
 
 for submission in tqdm.tqdm(results):
-    sleep(0.1)
+    sleep(0.2)
     if submission["result"] != "AC":
         write_time(submission["epoch_second"])
         continue
