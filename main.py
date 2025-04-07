@@ -39,7 +39,11 @@ for submission in tqdm.tqdm(results):
     submission_language = submission["language"]
     submission_content = requests.get(f"https://atcoder.jp/contests/{contest_id}/submissions/{submission_id}").text
     # print(submission_content)
-    soup = BeautifulSoup(submission_content, "html.parser")
+    try:
+        soup = BeautifulSoup(submission_content, "html.parser")
+    except:
+        write_time(submission["epoch_second"])
+        continue
     # print(soup.prettify())
     code = soup.find("pre", id="submission-code").text
     # print(code)
