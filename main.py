@@ -13,6 +13,11 @@ from git import Repo
 username = "rotarymars"
 lastunixtime = 0
 
+def write_time(time: int) -> None:
+    with open(".lastunixtime", "w") as f:
+        f.write(str(1+time))
+
+
 with open(".lastunixtime", "r") as f:
     lastunixtime = int(f.read())
 
@@ -26,6 +31,7 @@ repo = Repo(".")
 for submission in tqdm.tqdm(results):
     sleep(1)
     if submission["result"] != "AC":
+        write_time(submission["epoch_second"])
         continue
     contest_id = submission["contest_id"]
     problem_id = submission["problem_id"]
@@ -249,9 +255,7 @@ for submission in tqdm.tqdm(results):
         continue
     with open(f"{contest_id}/{problem_id}/{problem_id}.{extension}", "w") as f:
         f.write(code)
-    with open(".lastunixtime", "w") as f:
-        f.write(str(1+int(submission["epoch_second"])))
-
+    write_time(submission["epoch_second"])
     repo.git.add(f"{contest_id}/{problem_id}/{problem_id}.{extension}")
     repo.git.add(f".lastunixtime")
     repo.index.commit(f"Add {contest_id}/{problem_id}/{problem_id}.{extension}")
