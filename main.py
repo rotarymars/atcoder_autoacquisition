@@ -45,7 +45,11 @@ for submission in tqdm.tqdm(results):
         write_time(submission["epoch_second"])
         continue
     # print(soup.prettify())
-    code = soup.find("pre", id="submission-code").text
+    try:
+      code = soup.find("pre", id="submission-code").text
+    except:
+        print(f"https://atcoder.jp/contests/{contest_id}/submissions/{submission_id}")
+        raise Exception
     # print(code)
     os.makedirs(f"./{contest_id}", exist_ok=True)
     os.makedirs(f"./{contest_id}/{problem_id}", exist_ok=True)
