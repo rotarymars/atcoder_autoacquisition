@@ -263,3 +263,8 @@ for submission in tqdm.tqdm(results):
     repo.git.add(f"{contest_id}/{problem_id}/{problem_id}.{extension}")
     repo.git.add(f".lastunixtime")
     repo.index.commit(f"Add {contest_id}/{problem_id}/{problem_id}.{extension}")
+
+repo.git.add(".")
+repo.index.commit("Commit all changes")
+repo.git.clear_cache()
+del repo
