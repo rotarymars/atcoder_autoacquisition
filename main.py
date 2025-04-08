@@ -33,7 +33,7 @@ while True:
     results += list(filter(is_AC, results_tmp))
     if len(results_tmp) == 0:
         break
-    if len(results_tmp) >= 500:
+    if len(results) >= 500:
         results = results[:500]
         break
 # results = json.loads(response)
