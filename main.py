@@ -130,8 +130,6 @@ for submission in tqdm.tqdm(results):
         extension = "bf"
     elif re.match(rb_pattern, submission_language):
         extension = "rb"
-    elif re.match(c_pattern, submission_language):
-        extension = "c"
     elif re.match(dc_pattern, submission_language):
         extension = "dc"
     elif re.match(bash_pattern, submission_language):
@@ -258,6 +256,9 @@ for submission in tqdm.tqdm(results):
         extension = "R"
     elif re.match(v_pattern, submission_language):
         extension = "v"
+    elif re.match(c_pattern, submission_language):
+        extension = "c"
+
     else:
         print("unknown language for submission {} at contest {}: {}".format(submission_id, contest_id, submission_language))
         continue
