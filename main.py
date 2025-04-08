@@ -17,12 +17,25 @@ def write_time(time: int) -> None:
     with open(".lastunixtime", "w") as f:
         f.write(str(1+time))
 
+def is_AC(submission):
+    return submission["result"] == "AC"
+
 
 with open(".lastunixtime", "r") as f:
     lastunixtime = int(f.read())
 
-response = requests.get(f"https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user={username}&from_second={lastunixtime}")
-results = response.json()
+results = []
+
+while True:
+    response = requests.get(f"https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user={username}&from_second={lastunixtime}")
+    results_tmp = response.json()
+    lastunixtime = results_tmp[-1]["epoch_second"]
+    results += list(filter(is_AC, results_tmp))
+    if len(results_tmp) == 0:
+        break
+    if len(results_tmp) >= 500:
+        results = results[:500]
+        break
 # results = json.loads(response)
 # print(results)
 
