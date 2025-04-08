@@ -30,7 +30,7 @@ while True:
     response = requests.get(f"https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user={username}&from_second={lastunixtime}")
     results_tmp = response.json()
     if len(results_tmp) != 0:
-        lastunixtime = results_tmp[-1]["epoch_second"]
+        lastunixtime = results_tmp[-1]["epoch_second"]+1
     else:
         break
     results += list(filter(is_AC, results_tmp))
