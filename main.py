@@ -27,6 +27,7 @@ with open(".lastunixtime", "r") as f:
 results = []
 
 while True:
+    sleep(1)
     response = requests.get(f"https://kenkoooo.com/atcoder/atcoder-api/v3/user/submissions?user={username}&from_second={lastunixtime}")
     results_tmp = response.json()
     if len(results_tmp) != 0:
@@ -43,7 +44,7 @@ while True:
 repo = Repo(".")
 
 for submission in tqdm.tqdm(results):
-    sleep(0.2)
+    sleep(1)
     if submission["result"] != "AC":
         write_time(submission["epoch_second"])
         continue
