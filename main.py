@@ -48,8 +48,8 @@ for submission in tqdm.tqdm(results):
     try:
       code = soup.find("pre", id="submission-code").text
     except:
-        print(f"https://atcoder.jp/contests/{contest_id}/submissions/{submission_id}")
-        raise Exception
+        print(f"Skiped https://atcoder.jp/contests/{contest_id}/submissions/{submission_id} due to error")
+        continue
     # print(code)
     os.makedirs(f"./{contest_id}", exist_ok=True)
     os.makedirs(f"./{contest_id}/{problem_id}", exist_ok=True)
