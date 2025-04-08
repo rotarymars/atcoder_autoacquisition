@@ -34,7 +34,6 @@ while True:
     else:
         break
     results += list(filter(is_AC, results_tmp))
-    print(len(results), len(results_tmp))
     if len(results) >= 500:
         results = results[:500]
         break
