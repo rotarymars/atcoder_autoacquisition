@@ -283,7 +283,7 @@ for submission in tqdm.tqdm(results):
     write_time(submission["epoch_second"])
     repo.git.add(f"{contest_id}/{problem_id}/{problem_id}.{extension}")
     repo.git.add(f".lastunixtime")
-    repo.index.commit(f"Add {contest_id}/{problem_id}/{problem_id}.{extension} {datetime.formtimestamp(submission["epoch_second"], tz=timezone(timedelta(hours=9))).strftime("%Y-%m-%d %H:%M:%S")}")
+    repo.index.commit(f"Add {contest_id}/{problem_id}/{problem_id}.{extension} {datetime.fromtimestamp(submission["epoch_second"], tz=timezone(timedelta(hours=9))).strftime("%Y-%m-%d %H:%M:%S")}")
 
 repo.git.clear_cache()
 del repo
