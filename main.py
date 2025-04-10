@@ -9,6 +9,7 @@ import tqdm
 import re
 from time import sleep
 from git import Repo
+from datetime import datetime, timezone, timedelta
 
 username = "rotarymars"
 lastunixtime = 0
@@ -282,7 +283,7 @@ for submission in tqdm.tqdm(results):
     write_time(submission["epoch_second"])
     repo.git.add(f"{contest_id}/{problem_id}/{problem_id}.{extension}")
     repo.git.add(f".lastunixtime")
-    repo.index.commit(f"Add {contest_id}/{problem_id}/{problem_id}.{extension}")
+    repo.index.commit(f"Add {contest_id}/{problem_id}/{problem_id}.{extension} {datetime.formtimestamp(submission["epoch_second"], tz=timezone(timedelta(hours=9))).strftime("%Y-%m-%d %H:%M:%S")}")
 
 repo.git.clear_cache()
 del repo
